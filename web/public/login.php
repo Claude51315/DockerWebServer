@@ -10,11 +10,11 @@
 		return $pdo;
 	}
 	function login($pdo, $account, $password){
-		$sql = sprintf("Select * from user where account = '%s' and password = '%s'",
+		$sql = sprintf("Select * from `user` where `account` = '%s' and `password` = '%s';",
 						$account, 
 						$password);
-		$re = $pdo->query($sql);
-		if($re == FALSE)
+    $re = $pdo->query($sql);
+		if($re->rowCount() == 0 )
 			return FALSE;
 		else 
 			return TRUE;
@@ -27,7 +27,6 @@
 	$password = $_POST['password'];
 	$userTable=connectDB();
 	if($userTable != FALSE) {
-	
 	$ret = login($userTable, $account, $password);			
 		if($ret == TRUE){
 			echo "login success!";
