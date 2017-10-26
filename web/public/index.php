@@ -1,4 +1,5 @@
 <?php
+require("func.php")
 /*
 	try {
 		$dsn = 'mysql:host=mysql; dbname=test;charset=utf8; port=3306';
@@ -34,5 +35,19 @@
 		<div>  <p>Password = <input type="password" name="password"></p> </div>
 		<div>  <input type="submit"> </div>
 	</form>
-		
+    <form action="gift.php" method="POST">
+        <div> <p> Name = <input type="text" name = "name"></p></div>
+        <div> <p> Adj1 = <input type="text" name = "adj1"></p></div>
+        <div> <p> Adj2 = <input type="text" name = "adj2"></p></div>
+        <div> <p> email = <input type="text" name = "email"></p></div>
+        <div> <input type="submit"></div>
+    </form>		
+    <?php
+        $ret=connectDB();
+        if($ret){
+              list_gift($ret); 
+        }        
+
+    ?>
+
 </html>
