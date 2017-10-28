@@ -29,22 +29,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `gift` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(20) NOT NULL,
   `adj1` varchar(20) NOT NULL,
   `adj2` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gift`
 --
 
 INSERT INTO `gift` (`name`, `adj1`, `adj2`, `email`) VALUES
-('aa', 'bb', 'cc', 'dd'),
-('aaaasd', 'bbss', 'ccdd', 'fdfdf'),
-('tttyt', 'bbsstyeryw', 'ccddrwerw', 'erre'),
-('asdasd', 'asd', 'sdsdw', 'sdsdsd'),
-('dsdd', 'ddd', 'dddd', 'ddd'),
 ('r', 't', 'y', 'u'),
 ('dsdsd', 'dsdsd', 'dsdsd', 'aaaaa');
 COMMIT;
