@@ -4,6 +4,13 @@
 	$adj1 = $_POST['adj1'];
 	$adj2 = $_POST['adj2'];
 	$email = $_POST['email'];
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        echo "invalid email address!";
+        header("Refresh: 0.5;url=index.php");
+        die();	
+    }
+
     $gift =[
         "name" => $name,
         "email" => $email,
@@ -13,9 +20,13 @@
 	
     $pdo=connectDB();
 	if($pdo != FALSE) {
-	    add_gift($pdo, $gift);
-        header("Refresh: 0.5;url=index.php");
-        die();	
+	    $ret = add_gift($pdo, $gift);
+        if($ret){
+            echo "add gift fail";
+        } else {
+            header("Refresh: 0.5;url=index.php");
+            die();	
+        }
     } else {
 		echo "connect error!";
 	}

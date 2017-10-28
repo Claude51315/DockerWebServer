@@ -24,17 +24,11 @@ require("func.php")
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Simple Login</title>
+        <title>Xmas Gift Exchange</title>
     </head>
     <body>
-        <h1>This is a simple login interface powered by Docker.</h1>
-		<p>Based on this <a href = "https://github.com/nanoninja/docker-nginx-php-mysql">Git Repo</a>, a web server environment can be easily established. </p>
-    </body>
-	<form action="login.php" method="POST">
-		<div>  <p>Account = <input type="text" name="account"></p> </div>
-		<div>  <p>Password = <input type="password" name="password"></p> </div>
-		<div>  <input type="submit"> </div>
-	</form>
+        <h1>Chrismax Party with gift exchange!</h1>
+        <p> Please provide the following information</p>    
     <form action="gift.php" method="POST">
         <div> <p> Name = <input type="text" name = "name"></p></div>
         <div> <p> Adj1 = <input type="text" name = "adj1"></p></div>
@@ -50,4 +44,5 @@ require("func.php")
 
     ?>
 
+    </body>
 </html>

@@ -30,11 +30,10 @@
         $gift["email"]);
         $stmt = $pdo->prepare($sql);
         if($stmt->execute()){
-            echo "YES";
+            return 0;
         } else {
-            echo "NO";
+            return 1;        
         }
-        return 0;            
     }
     function list_gift($pdo){
         $sql = "SELECT * FROM `gift`";
