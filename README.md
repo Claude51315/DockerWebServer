@@ -17,3 +17,9 @@ password: aaaa
 2. make docker-run
 
 3. login in to myphpadmin via localhost:8080 and import test.sql
+
+# credit 
+
+1. [html theme](http://www.templatemo.com/tm-484-ocean)
+
+2. [final countdown](http://hilios.github.io/jQuery.countdown/)
