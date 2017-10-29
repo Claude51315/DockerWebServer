@@ -23,11 +23,11 @@
         return FALSE;
     }
     function add_gift( $pdo,  $gift ){
-        $sql = sprintf("INSERT INTO `gift` (`Name`, `adj1`, `adj2`, `email`) VALUES ('%s', '%s', '%s', '%s');", 
+        $sql = sprintf("INSERT INTO `gift` (`Name`, `adj1`, `adj2`, `hash`) VALUES ('%s', '%s', '%s', '%s');", 
         $gift["name"], 
         $gift["adj1"],
         $gift["adj2"],
-        $gift["email"]);
+        $gift["hash"]);
         $stmt = $pdo->prepare($sql);
         if($stmt->execute()){
             return 0;
@@ -45,6 +45,51 @@
             echo "</pre>";
         } else {
             echo "NO";
+        }
+    }
+    function get_name_by_hash($pdo, $hash){
+        $sql = "SELECT * FROM `gift` WHERE `hash` = ?";
+        $stmt = $pdo->prepare($sql);
+        if(!$stmt)
+            echo "prepare fail";
+        $ret = $stmt->bindValue(1, $hash, PDO::PARAM_STR);
+        if(!$ret)
+            echo "bind fail";
+        if($stmt->execute()){
+            $ret = $stmt->fetch();
+            if(!ret)
+                return FALSE;
+            return $ret;
+        } else {
+            echo "QAQ";
+        }
+    }
+    function get_receiver_by_hash($pdo, $hash){
+        $sql = "SELECT * FROM `gift` WHERE `hash` = ?";
+        $stmt = $pdo->prepare($sql);
+        if(!$stmt)
+            echo "prepare fail";
+        $ret = $stmt->bindValue(1, $hash, PDO::PARAM_STR);
+        if(!$ret)
+            echo "bind fail";
+        if($stmt->execute()){
+            $ret = $stmt->fetch();
+            
+            if(!$ret || $stmt->rowCount() == 0)
+                return FALSE;
+            $id=$ret["id"];
+        } else {
+            return FALSE;
+        }
+        $sql = "SELECT * FROM `gift`";
+        $stmt = $pdo->prepare($sql);
+        if($stmt->execute()){ 
+            $ret = $stmt->fetchAll();
+            $count = $stmt->rowCount();
+            $receiver_id = ($id + 2) % $count;
+            return $ret[$receiver_id];
+        } else {
+            return FALSE; 
         }
     }
 ?>

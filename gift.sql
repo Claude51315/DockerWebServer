@@ -33,16 +33,14 @@ CREATE TABLE `gift` (
   `name` varchar(20) NOT NULL,
   `adj1` varchar(20) NOT NULL,
   `adj2` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `hash` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gift`
 --
 
-INSERT INTO `gift` (`name`, `adj1`, `adj2`, `email`) VALUES
-('r', 't', 'y', 'u'),
-('dsdsd', 'dsdsd', 'dsdsd', 'aaaaa');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
